@@ -78,6 +78,39 @@ def fcModel2():
 
     return model
 
+def fccBigModel1():
+    '''
+    Large fully connected network
+    I expect extremely low results for 5, 10, 20 but will attempt very large training session to see what happens
+
+    5 Epochs: test loss:  2.0169111042022707 , test accuracy:  0.2202
+    10 Epochs: test loss:  1.8814141105651856 , test accuracy:  0.2967
+    20 Epochs: test loss:  1.7632045572280883 , test accuracy:  0.3611
+
+    50 Epochs: test loss: 1.569729489326477 , test accuracy:  0.4341
+    100 Epochs: test loss:  1.5932472543716432 , test accuracy:  0.4685
+    250 Epochs: test loss:  3.286265371322632 , test accuracy:  0.4325
+
+    Overfitting became a serious problem in longer training sessions and
+    the training time is excessive for such a straight-forward problem
+
+    Likely requires far more training data to be effective
+    '''
+
+    model = models.Sequential()
+    model.add(layers.Flatten(input_shape=(32, 32, 3)))
+    model.add(layers.Dense(128, activation='sigmoid', ))
+    model.add(layers.Dense(256, activation='sigmoid', ))
+    model.add(layers.Dense(512, activation='sigmoid', ))
+    model.add(layers.Dense(256, activation='sigmoid', ))
+    model.add(layers.Dense(128, activation='sigmoid', ))
+    model.add(layers.Dense(64, activation='sigmoid', ))
+    model.add(layers.Dense(10))
+
+    model.summary()
+
+    return model
+
 def cnnModel1():
     '''
     Simple CNN model (one conv layer, 1 64 Node hidden layer

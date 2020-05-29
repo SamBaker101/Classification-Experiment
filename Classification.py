@@ -31,13 +31,13 @@ def main():
 
     #plotItem(1, train_images, train_labels)
 
-    model = myModels.cnnDropModel4()
+    model = myModels.fccBigModel1()
 
     model.compile(optimizer='adam',
                   loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                   metrics=['accuracy'])
 
-    model.fit(train_images, train_labels, epochs=30,
+    model.fit(train_images, train_labels, epochs=250,
                 validation_data=(test_images, test_labels))
 
 
