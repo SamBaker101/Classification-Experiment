@@ -31,14 +31,14 @@ def main():
 
     #plotItem(1, train_images, train_labels)
 
-    model = myModels.cnnModel1()
+    model = myModels.cnnDropModel4()
 
     model.compile(optimizer='adam',
                   loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                   metrics=['accuracy'])
 
-    history = model.fit(train_images, train_labels, epochs=20,
-                        validation_data=(test_images, test_labels))
+    model.fit(train_images, train_labels, epochs=30,
+                validation_data=(test_images, test_labels))
 
 
 
